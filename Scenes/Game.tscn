@@ -1,15 +1,38 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=1]
 
 [sub_resource type="BoxShape" id=1]
 
+[sub_resource type="PlaneMesh" id=2]
+size = Vector2( 100, 100 )
+
+[sub_resource type="ProceduralSky" id=3]
+sky_top_color = Color( 0.211765, 0.313726, 0.552941, 1 )
+sky_horizon_color = Color( 0.545098, 0.686275, 0.811765, 1 )
+sky_curve = 0.13
+ground_bottom_color = Color( 0.545098, 0.686275, 0.811765, 1 )
+ground_horizon_color = Color( 0.545098, 0.686275, 0.811765, 1 )
+sun_latitude = 50.0
+sun_angle_max = 30.0
+sun_energy = 30.0
+
+[sub_resource type="Environment" id=4]
+background_mode = 2
+background_sky = SubResource( 3 )
+ambient_light_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+ambient_light_energy = 1.61
+ambient_light_sky_contribution = 0.23
+tonemap_mode = 2
+tonemap_white = 16.0
+
 [node name="Spatial" type="Spatial"]
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.216, 0 )
 
 [node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.14855 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40704, 1.19495, -6.14855 )
 
 [node name="StaticBody" type="StaticBody" parent="CSGBox"]
 collision_layer = 2
@@ -18,30 +41,13 @@ collision_mask = 2
 [node name="CollisionShape" type="CollisionShape" parent="CSGBox/StaticBody"]
 shape = SubResource( 1 )
 
-[node name="CSGBox4" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53045, 0, -6.14855 )
+[node name="Plane" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="CSGBox4"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="CSGBox4/StaticBody"]
-shape = SubResource( 1 )
-
-[node name="CSGBox2" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0 )
-
-[node name="StaticBody" type="StaticBody" parent="CSGBox2"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape" type="CollisionShape" parent="CSGBox2/StaticBody"]
-shape = SubResource( 1 )
-
-[node name="CSGBox3" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
-
-[node name="StaticBody" type="StaticBody" parent="CSGBox3"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape" type="CollisionShape" parent="CSGBox3/StaticBody"]
-shape = SubResource( 1 )
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, -0.642788, 0.766045, 0, -0.766045, -0.642788, 0.162332, 4.77306, 1.51468 )
+shadow_enabled = true
