@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/RoomManager.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Tree1.tscn" type="PackedScene" id=2]
+
+[node name="Room Manager" type="Spatial"]
+script = ExtResource( 1 )
+plants = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
+pattern_positions = [ Vector3( -4, 0, -3 ), Vector3( -2, 0, -3 ), Vector3( 0, 0, -3 ), Vector3( 2, 0, -3 ), Vector3( 4, 0, -3 ) ]
+puzzle_positions = [ Vector3( -4, 0, 3 ), Vector3( -2, 0, 3 ), Vector3( 0, 0, 3 ), Vector3( 2, 0, 3 ), Vector3( 4, 0, 3 ) ]
+
+[node name="PuzzleHolder" type="Spatial" parent="."]
+
+[node name="PatternHolder" type="Spatial" parent="."]
