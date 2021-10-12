@@ -5,6 +5,7 @@ export (Array, Vector3) var pattern_positions
 export (Array, Vector3) var puzzle_positions
 
 var PLANT_COUNT = 5
+var difficulty_level = 1
 
 # these are the index in the plants array
 var state_pattern:Array
@@ -70,8 +71,17 @@ func set_up_pattern():
 	state_puzzle = state_pattern.duplicate()
 
 func set_up_puzzle():
-	# TODO: not this
-	state_puzzle[0] = get_next_plant_index(state_puzzle[0])
+	var used_idxs = []
+	for i in range(difficulty_level):
+		var okay_idxs = []
+		for j in range(PLANT_COUNT):
+			if not j in used_idxs:
+				okay_idxs.append(j)
+		# pick a random index not in the used indexes
+		var idx = okay_idxs[randi() % okay_idxs.size()]
+		# assign a random value to it
+		state_puzzle[idx] = randi() % plants.size()
+		used_idxs.append(idx)
 
 func instantiate_plants(state_array, positions, holder):
 	print("-----")
