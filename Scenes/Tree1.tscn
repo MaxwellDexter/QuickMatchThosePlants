@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Models/Tree1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Models/pot.obj" type="ArrayMesh" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Textures/Tree1_Emissive.png" type="Texture" id=4]
 [ext_resource path="res://Textures/Pot_N.png" type="Texture" id=5]
 [ext_resource path="res://Textures/Pot_Diffuse.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/clickable.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/plant.gd" type="Script" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 6 )
@@ -22,6 +24,9 @@ emission_operator = 0
 emission_on_uv2 = false
 emission_texture = ExtResource( 4 )
 
+[sub_resource type="CylinderShape" id=3]
+height = 4.5
+
 [node name="pot" type="MeshInstance"]
 mesh = ExtResource( 2 )
 material/0 = SubResource( 1 )
@@ -30,3 +35,14 @@ material/0 = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 mesh = ExtResource( 1 )
 material/0 = SubResource( 2 )
+script = ExtResource( 8 )
+
+[node name="Collider" type="StaticBody" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 7 )
+identifier = "Tree1"
+
+[node name="CollisionShape" type="CollisionShape" parent="Collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0 )
+shape = SubResource( 3 )

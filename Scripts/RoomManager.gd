@@ -5,7 +5,7 @@ export (Array, Vector3) var pattern_positions
 export (Array, Vector3) var puzzle_positions
 
 var PLANT_COUNT = 5
-var difficulty_level = 1
+var difficulty_level = 3
 
 # these are the index in the plants array
 var state_pattern:Array
@@ -35,19 +35,36 @@ func get_next_plant_obj(index):
 func check_state():
 	var solved = true
 	for i in range(state_pattern.size()):
-		solved &= state_pattern[i] == state_puzzle[i]
+		solved = solved && state_pattern[i] == state_puzzle[i]
 	return solved
 
 func cycle_plant(index):
 	var old_plant = puzzle_plant_objs[index]
-	var pos = old_plant.transform
+	var pos = old_plant.translation
+	puzzle_holder.remove_child(old_plant)
 	old_plant.queue_free()
 	
 	var plant_idx = get_next_plant_index(state_puzzle[index])
+	state_puzzle[index] = plant_idx
 	var new_plant = get_next_plant_obj(plant_idx)
 	puzzle_holder.add_child(new_plant)
-	new_plant.transform = pos
+	new_plant.translation = pos
+	new_plant.find_node("Collider").is_clickable = true
 	puzzle_plant_objs[index] = new_plant
+
+func _on_Character_clicked_object(object):
+	var id = object.identifier
+	if id == "Button":
+		print(check_state())
+	else: # is PLANT
+		# find the index
+		var index = 0
+		for i in range(puzzle_plant_objs.size()):
+			var this_obj = puzzle_plant_objs[i]
+			if this_obj.get_node("Collider") == object:
+				index = i
+				break
+		cycle_plant(index)
 
 ########################
 # GENERATING ROOM CODE #
@@ -57,8 +74,9 @@ func generate_room():
 	set_up_pattern()
 	set_up_puzzle()
 	
-	instantiate_plants(state_pattern, pattern_positions, pattern_holder)
-	instantiate_plants(state_puzzle, puzzle_positions, puzzle_holder)
+	instantiate_plants(state_pattern, pattern_positions, pattern_holder, false)
+	instantiate_plants(state_puzzle, puzzle_positions, puzzle_holder, true)
+	puzzle_plant_objs = puzzle_holder.get_children()
 	
 	print("-_-_-_-_-_-_-_-")
 
@@ -83,12 +101,12 @@ func set_up_puzzle():
 		state_puzzle[idx] = randi() % plants.size()
 		used_idxs.append(idx)
 
-func instantiate_plants(state_array, positions, holder):
+func instantiate_plants(state_array, positions, holder, clickable):
 	print("-----")
 	for i in range(state_array.size()):
 		var idx = state_array[i]
 		print(idx)
 		var plant = plants[idx].instance()
 		plant.translation = positions[i]
-#		plant.rotation_degrees.y = randi() % 360
-		puzzle_holder.add_child(plant)
+		plant.find_node("Collider").is_clickable = clickable
+		holder.add_child(plant)

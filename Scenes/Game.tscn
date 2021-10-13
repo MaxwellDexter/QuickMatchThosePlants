@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Room Manager.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Models/greenhouse.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -28,16 +28,14 @@ ambient_light_sky_contribution = 0.23
 tonemap_mode = 2
 tonemap_white = 16.0
 
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0, 0, 0, 1 )
-
-[node name="Spatial" type="Spatial"]
+[node name="Root" type="Spatial"]
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
 [node name="CSGBox" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40704, 1.19495, -6.14855 )
+visible = false
 
 [node name="StaticBody" type="StaticBody" parent="CSGBox"]
 collision_layer = 2
@@ -59,7 +57,7 @@ shadow_enabled = true
 
 [node name="Room Manager" parent="." instance=ExtResource( 2 )]
 
-[node name="greenhouse" type="MeshInstance" parent="."]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -5, -10.51, 5 )
-mesh = ExtResource( 3 )
-material/0 = SubResource( 5 )
+[node name="NextButtonCase" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.46194, 0, -0.191342, 0, 0.5, 0, 0.191342, 0, 0.46194, -0.301425, 2.38419e-07, 1.85584 )
+
+[connection signal="clicked_object" from="Character" to="Room Manager" method="_on_Character_clicked_object"]

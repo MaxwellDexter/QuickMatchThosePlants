@@ -1,5 +1,7 @@
 extends Spatial
 
+signal clicked_object(object)
+
 var X_MOUSE_SENSITIVITY = 0.001
 var Y_MOUSE_SENSITIVITY = 0.001
 var INVERT_X = true
@@ -43,3 +45,6 @@ func _input(event):
 		# rotate
 		rotator.rotate_object_local(Vector3(0, 1, 0), rot_x)
 		rotator.rotate_object_local(Vector3(1, 0 , 0), rot_y)
+
+func _on_RayCast_clicked_object(object):
+	emit_signal("clicked_object", object)
