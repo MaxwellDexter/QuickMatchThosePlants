@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Room Manager.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/level_manager.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -28,7 +27,7 @@ ambient_light_sky_contribution = 0.23
 tonemap_mode = 2
 tonemap_white = 16.0
 
-[node name="Root" type="Spatial"]
+[node name="Game" type="Spatial"]
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
@@ -55,9 +54,5 @@ environment = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, -0.642788, 0.766045, 0, -0.766045, -0.642788, 0.162332, 4.77306, 1.51468 )
 shadow_enabled = true
 
-[node name="Room Manager" parent="." instance=ExtResource( 2 )]
-
-[node name="NextButtonCase" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.46194, 0, -0.191342, 0, 0.5, 0, 0.191342, 0, 0.46194, -0.301425, 2.38419e-07, 1.85584 )
-
-[connection signal="clicked_object" from="Character" to="Room Manager" method="_on_Character_clicked_object"]
+[node name="Level Manager" type="Spatial" parent="."]
+script = ExtResource( 2 )

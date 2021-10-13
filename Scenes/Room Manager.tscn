@@ -1,15 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/RoomManager.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Tree1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Tree2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Tree3.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Models/greenhouse.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[node name="Room Manager" type="Spatial"]
+[node name="Room" type="Spatial"]
 script = ExtResource( 1 )
 plants = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
 pattern_positions = [ Vector3( -4, 0, -3 ), Vector3( -2, 0, -3 ), Vector3( 0, 0, -3 ), Vector3( 2, 0, -3 ), Vector3( 4, 0, -3 ) ]
@@ -23,3 +24,6 @@ puzzle_positions = [ Vector3( -4, 0, 3 ), Vector3( -2, 0, 3 ), Vector3( 0, 0, 3 
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -5, -10.51, 5 )
 mesh = ExtResource( 5 )
 material/0 = SubResource( 1 )
+
+[node name="NextButtonCase" parent="." instance=ExtResource( 6 )]
+transform = Transform( -0.191342, 0, -0.46194, 0, 0.5, 0, 0.46194, 0, -0.191342, 2.5, 0, 0 )

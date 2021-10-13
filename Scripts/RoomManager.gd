@@ -22,6 +22,9 @@ func _ready():
 	puzzle_holder = $PuzzleHolder
 	randomize()
 	generate_room()
+	# set up signal
+	var character = get_node("/root/Game/Character")
+	character.connect("clicked_object", self, "_on_Character_clicked_object")
 
 func get_next_plant_index(index):
 	if index + 1 >= plants.size():
@@ -55,7 +58,7 @@ func cycle_plant(index):
 func _on_Character_clicked_object(object):
 	var id = object.identifier
 	if id == "Button":
-		print(check_state())
+		get_parent().next_room(check_state())
 	else: # is PLANT
 		# find the index
 		var index = 0
