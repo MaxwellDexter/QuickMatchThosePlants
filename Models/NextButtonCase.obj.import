@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/NextButtonCase.obj-87764cd31343606db896283ae9335f40.mesh"
+
+[deps]
+
+files=[ "res://.import/NextButtonCase.obj-87764cd31343606db896283ae9335f40.mesh" ]
+
+source_file="res://Models/NextButtonCase.obj"
+dest_files=[ "res://.import/NextButtonCase.obj-87764cd31343606db896283ae9335f40.mesh", "res://.import/NextButtonCase.obj-87764cd31343606db896283ae9335f40.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
