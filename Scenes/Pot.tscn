@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Models/pot.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Textures/Pot_N.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Pot_Diffuse.png" type="Texture" id=6]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 6 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 5 )
+
+[node name="pot" type="MeshInstance"]
+mesh = ExtResource( 2 )
+material/0 = SubResource( 1 )

@@ -5,7 +5,7 @@ export (Array, Vector3) var pattern_positions
 export (Array, Vector3) var puzzle_positions
 
 var PLANT_COUNT = 5
-var difficulty_level = 3
+var difficulty_level = 1
 
 # these are the index in the plants array
 var state_pattern:Array

@@ -1,22 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Models/Tree2.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://Models/pot.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Textures/Tree2_Emissive.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Tree2_DiffuseTransparency.png" type="Texture" id=4]
-[ext_resource path="res://Textures/Pot_N.png" type="Texture" id=5]
-[ext_resource path="res://Textures/Pot_Diffuse.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/clickable.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/plant.gd" type="Script" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_texture = ExtResource( 6 )
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 5 )
-
-[sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.31
 albedo_texture = ExtResource( 4 )
 emission_enabled = true
 emission = Color( 0, 0, 0, 1 )
@@ -25,20 +18,17 @@ emission_operator = 0
 emission_on_uv2 = false
 emission_texture = ExtResource( 3 )
 
-[sub_resource type="CylinderShape" id=3]
+[sub_resource type="CylinderShape" id=2]
 height = 4.5
 
-[node name="pot" type="MeshInstance"]
-mesh = ExtResource( 2 )
-material/0 = SubResource( 1 )
-
-[node name="Tree2" type="MeshInstance" parent="."]
+[node name="Tree2" type="MeshInstance"]
 transform = Transform( 0.999999, 0.00130388, 1.01071e-05, -0.00130388, 0.999999, -0.000115166, -1.02533e-05, 0.000115153, 1, 0, 0.5, 0 )
 mesh = ExtResource( 1 )
-material/0 = SubResource( 2 )
+material/0 = SubResource( 1 )
 script = ExtResource( 8 )
 
 [node name="Collider" type="StaticBody" parent="."]
+transform = Transform( 1, -1.70006e-11, -9.09495e-13, -1.65425e-11, 1, 0, 9.09495e-13, 0, 1, 0, 0, 0 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 7 )
@@ -46,4 +36,4 @@ identifier = "Tree2"
 
 [node name="CollisionShape" type="CollisionShape" parent="Collider"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
