@@ -1,5 +1,8 @@
 extends Node
 
+signal score_changed(new_score)
+signal points_added(points, max_points)
+
 var room_scene = preload("res://Scenes/Room Manager.tscn")
 var room_inst
 var score = 0
@@ -24,14 +27,12 @@ func next_room(correct):
 	load_room()
 
 func add_score(correct):
-	if correct:
-		if level_time > MIN_LEVEL_TIME:
-			score += MIN_LEVEL_SCORE
-		else:
-			score += MAX_LEVEL_SCORE * (1 - (level_time / MIN_LEVEL_TIME))
-	else:
-		score += MIN_LEVEL_SCORE
-	# tell ui to add score
+	var score_to_add = MIN_LEVEL_SCORE
+	if correct and level_time <= MIN_LEVEL_TIME:
+		score_to_add = MAX_LEVEL_SCORE * (1 - (level_time / MIN_LEVEL_TIME))
+	score += score_to_add
+	emit_signal("score_changed", score)
+	emit_signal("points_added", score_to_add, MAX_LEVEL_SCORE)
 
 func _process(delta):
 	level_time += delta

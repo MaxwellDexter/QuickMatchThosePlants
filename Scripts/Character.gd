@@ -16,16 +16,6 @@ func _ready():
 	rotator = $Rotation
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _process(delta):
-	process_input(delta)
-
-func process_input(delta):
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		# do variable calculations
