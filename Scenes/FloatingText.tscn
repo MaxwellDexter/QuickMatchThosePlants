@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Teletactile-3zavL.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/floating_text.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="FloatingText" type="Position2D"]
+scale = Vector2( 0.7, 0.7 )
+script = ExtResource( 3 )
+bad_colour = Color( 0.87451, 0, 0, 1 )
+good_colour = Color( 0, 0.811765, 0.0705882, 1 )
+
+[node name="Plus" type="Label" parent="."]
+margin_left = -24.9164
+margin_top = 0.36604
+margin_right = -11.9164
+margin_bottom = 17.366
+custom_fonts/font = SubResource( 1 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="."]
+margin_left = -13.1102
+margin_top = -0.0471745
+margin_right = 39.8898
+margin_bottom = 16.9528
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.12549, 1, 0, 1 )
+text = "200"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

@@ -4,16 +4,19 @@ signal score_changed(new_score)
 signal points_added(points, max_points)
 
 var room_scene = preload("res://Scenes/Room Manager.tscn")
+var end_screen
+var can_pause = true
 var room_inst
 var score = 0
 var level_time = 0
 
 const MIN_LEVEL_TIME = 20
 const MAX_LEVEL_SCORE = 1000
-const MIN_LEVEL_SCORE = 50
+const MIN_LEVEL_SCORE = 1
 
 func _ready():
 	load_room()
+	end_screen = get_tree().get_root().get_node("Game/Pause/End Screen")
 
 func load_room():
 	room_inst = room_scene.instance()
@@ -44,5 +47,8 @@ func get_time():
 	return level_time
 
 func _on_Timer_timeout():
-	print("times up!")
-	print(score)
+	can_pause = false
+	get_tree().paused = true
+	end_screen.visible = true
+	ScoreStorer.add_score(score)
+	
