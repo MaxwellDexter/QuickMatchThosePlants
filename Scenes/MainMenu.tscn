@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/MainMenuUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Pot.tscn" type="PackedScene" id=3]
 
-[sub_resource type="ProceduralSky" id=2]
+[sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.211765, 0.313726, 0.552941, 1 )
 sky_horizon_color = Color( 0.545098, 0.686275, 0.811765, 1 )
 sky_curve = 0.13
@@ -14,16 +14,16 @@ sun_latitude = 50.0
 sun_angle_max = 30.0
 sun_energy = 30.0
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=2]
 background_mode = 2
-background_sky = SubResource( 2 )
+background_sky = SubResource( 1 )
 ambient_light_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 ambient_light_energy = 1.61
 ambient_light_sky_contribution = 0.23
 tonemap_mode = 2
 tonemap_white = 16.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "New Anim"
 length = 10.0
 loop = true
@@ -58,7 +58,7 @@ size = Vector2( 30, 30 )
 [node name="MainMenu" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
 transform = Transform( 0.798635, -0.475386, 0.369039, 0, 0.61321, 0.78992, -0.601815, -0.630858, 0.489732, 0, 5, 0 )
@@ -73,7 +73,7 @@ transform = Transform( 0.970164, -0.121225, 0.209968, 0, 0.866025, 0.5, -0.24245
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
 autoplay = "New Anim"
-"anims/New Anim" = SubResource( 5 )
+"anims/New Anim" = SubResource( 3 )
 
 [node name="Plane" type="MeshInstance" parent="."]
 mesh = SubResource( 4 )
