@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Textures/Tree3_Emissive.png" type="Texture" id=1]
+[ext_resource path="res://Mats/Interact.tres" type="Material" id=2]
 [ext_resource path="res://Textures/Tree3_Diffuse.png" type="Texture" id=3]
 [ext_resource path="res://Models/Tree3.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://Scripts/clickable.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/plant.gd" type="Script" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
+resource_local_to_scene = true
+next_pass = ExtResource( 2 )
 albedo_texture = ExtResource( 3 )
 emission_enabled = true
 emission = Color( 0, 0, 0, 1 )

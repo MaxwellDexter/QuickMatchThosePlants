@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+uniform float strength;
+
+void fragment () {
+	ALBEDO = vec3(0.0, 1.0, 0.0);
+	ALPHA = strength;
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/strength = null
