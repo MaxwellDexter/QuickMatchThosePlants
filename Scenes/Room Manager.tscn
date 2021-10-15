@@ -7,15 +7,15 @@
 [ext_resource path="res://Scenes/Greenhouse.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Tree4.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Textures/01tizeta_floor_a.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Terrain/01tizeta_floor_a.png" type="Texture" id=8]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.615686, 0.615686, 0.615686, 1 )
 albedo_texture = ExtResource( 8 )
 uv1_scale = Vector3( 6.5, 6.5, 1 )
 
 [sub_resource type="PlaneMesh" id=2]
-material = SubResource( 1 )
+material = SubResource( 3 )
 size = Vector2( 12.367, 13.118 )
 
 [node name="Room" type="Spatial"]
@@ -29,7 +29,7 @@ puzzle_positions = [ Vector3( 3, 0, 3 ), Vector3( 4, 0, 1.5 ), Vector3( 5, 0, 0 
 [node name="PatternHolder" type="Spatial" parent="."]
 
 [node name="NextButtonCase" parent="." instance=ExtResource( 6 )]
-transform = Transform( -0.382683, 0, -0.92388, 0, 1, 0, 0.92388, 0, -0.382683, 2.5, 0, 0 )
+transform = Transform( -0.382683, 0, -0.92388, 0, 1, 0, 0.92388, 0, -0.382683, 2, 0, 0 )
 
 [node name="PotHolder" type="Spatial" parent="."]
 
