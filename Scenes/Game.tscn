@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/level_manager.gd" type="Script" id=2]
@@ -6,9 +6,6 @@
 [ext_resource path="res://Scripts/Pause.gd" type="Script" id=4]
 [ext_resource path="res://UI/UI_theme.tres" type="Theme" id=5]
 [ext_resource path="res://UI/KidpixiesRegular-p0Z1.ttf" type="DynamicFontData" id=6]
-
-[sub_resource type="PlaneMesh" id=1]
-size = Vector2( 100, 100 )
 
 [sub_resource type="ProceduralSky" id=2]
 sky_top_color = Color( 0.188235, 0.0666667, 0.27451, 1 )
@@ -159,10 +156,6 @@ pause_mode = 1
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-
-[node name="Plane" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
-material/0 = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
