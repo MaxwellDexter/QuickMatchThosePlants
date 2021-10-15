@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/GreenhouseEnd.obj-3d7922306b5d9df0327a1c4505ba129a.mesh"
+
+[deps]
+
+files=[ "res://.import/GreenhouseEnd.obj-3d7922306b5d9df0327a1c4505ba129a.mesh" ]
+
+source_file="res://Models/GreenhouseEnd.obj"
+dest_files=[ "res://.import/GreenhouseEnd.obj-3d7922306b5d9df0327a1c4505ba129a.mesh", "res://.import/GreenhouseEnd.obj-3d7922306b5d9df0327a1c4505ba129a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
