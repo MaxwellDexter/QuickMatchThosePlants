@@ -2,11 +2,6 @@ extends Spatial
 
 signal clicked_object(object)
 
-var X_MOUSE_SENSITIVITY = 0.001
-var Y_MOUSE_SENSITIVITY = 0.001
-var INVERT_X = true
-var INVERT_Y = true
-
 var rot_x = 0
 var rot_y = 0
 
@@ -24,12 +19,12 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		# do variable calculations
-		var x_sens = X_MOUSE_SENSITIVITY * (-1 if INVERT_X else 1)
-		var y_sens = Y_MOUSE_SENSITIVITY * (-1 if INVERT_Y else 1)
+		var x_sens = Settings.X_MOUSE_SENSITIVITY * (1 if Settings.INVERT_X else -1)
+		var y_sens = Settings.Y_MOUSE_SENSITIVITY * (1 if Settings.INVERT_Y else -1)
 		
 		# modify accumulated mouse rotation
-		rot_x += event.relative.x * x_sens
-		rot_y += event.relative.y * y_sens
+		rot_x += event.relative.x / x_sens
+		rot_y += event.relative.y / y_sens
 		
 		# clamp vertical
 		rot_y = clamp(rot_y, -1, 1)

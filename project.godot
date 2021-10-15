@@ -10,13 +10,13 @@ config_version=4
 
 [application]
 
-config/name="SolarpunkJam"
-run/main_scene="res://Scenes/Game.tscn"
-config/icon="res://icon.png"
+config/name="Quick, Match Those Plants!"
+run/main_scene="res://Scenes/MainMenu.tscn"
 
 [autoload]
 
 ScoreStorer="*res://Scripts/score_storer.gd"
+Settings="*res://Scripts/settings.gd"
 
 [display]
 
@@ -42,7 +42,3 @@ ui_accept={
 [physics]
 
 common/enable_pause_aware_picking=true
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"

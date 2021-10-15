@@ -9,7 +9,7 @@ onready var container = get_node("High Score Container")
 const SHOWN_HIGH_SCORES = 4
 
 func _ready():
-	score.text = str(ScoreStorer.most_recent_score)
+	score.text = str(int(ScoreStorer.most_recent_score))
 	var high_scores = ScoreStorer.get_high_scores()
 	if high_scores.size() > 0:
 		var length = SHOWN_HIGH_SCORES
@@ -17,9 +17,8 @@ func _ready():
 			length = high_scores.size()
 		for i in range(length):
 			var label = score_label.instance()
-			label.text = str(high_scores[i])
+			label.text = str(int(high_scores[i]))
 			container.add_child(label)
 
 func _on_Button_pressed():
-	# todo: load main menu
-	pass
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/Teletactile-3zavL.ttf" type="DynamicFontData" id=2]
@@ -25,6 +25,12 @@ size = 40
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 0, 0, 0, 1, 0.117647, 0.117647, 0.117647, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 5 )
 
 [node name="Score Screen" type="Control"]
 anchor_right = 1.0
@@ -126,6 +132,20 @@ margin_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.566391
+margin_bottom = -0.566391
+texture = SubResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

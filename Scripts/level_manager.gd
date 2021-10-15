@@ -51,4 +51,9 @@ func _on_Timer_timeout():
 	get_tree().paused = true
 	end_screen.visible = true
 	ScoreStorer.add_score(score)
-	
+	$"End Timer".start()
+
+func _on_End_Timer_timeout():
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene("res://Scenes/ScoreScreen.tscn")

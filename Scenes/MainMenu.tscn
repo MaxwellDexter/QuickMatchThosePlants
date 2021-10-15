@@ -69,7 +69,7 @@ shadow_enabled = true
 [node name="MainMenu" parent="." instance=ExtResource( 2 )]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.0236201, 0.49986, -0.865784, 0, 0.866025, 0.5, 0.999721, 0.0118101, -0.0204556, -10, 15, -0.300768 )
+transform = Transform( 0.970164, -0.121225, 0.209968, 0, 0.866025, 0.5, -0.24245, -0.485082, 0.840186, 3.11804, 15, 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
 autoplay = "New Anim"

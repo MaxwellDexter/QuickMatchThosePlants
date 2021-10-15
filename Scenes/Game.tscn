@@ -99,6 +99,10 @@ autostart = true
 
 [node name="Level Timer" type="Timer" parent="Level Manager"]
 
+[node name="End Timer" type="Timer" parent="Level Manager"]
+pause_mode = 2
+wait_time = 2.0
+
 [node name="Pause" type="CanvasLayer" parent="."]
 layer = 5
 
@@ -210,6 +214,7 @@ valign = 1
 
 [connection signal="timeout" from="Level Manager/Timer" to="Level Manager" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Level Manager/Level Timer" to="Level Manager" method="_on_Level_Timer_timeout"]
+[connection signal="timeout" from="Level Manager/End Timer" to="Level Manager" method="_on_End_Timer_timeout"]
 [connection signal="pressed" from="Pause/PauseScreen/VBoxContainer/return" to="Pause/PauseScreen" method="_on_Button_pressed"]
 [connection signal="pressed" from="Pause/PauseScreen/VBoxContainer/restart" to="Pause/PauseScreen" method="_on_restart_pressed"]
 [connection signal="pressed" from="Pause/PauseScreen/VBoxContainer/main menu" to="Pause/PauseScreen" method="_on_main_menu_pressed"]

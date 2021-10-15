@@ -1,0 +1,203 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/UI_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/settings_page.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -226.269, -61.0829 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.492584
+margin_top = -0.268173
+margin_right = 0.492584
+margin_bottom = -0.268173
+texture = SubResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+margin_left = -87.0
+margin_right = 87.0
+grow_horizontal = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X Sense" type="HSplitContainer" parent="VBoxContainer"]
+margin_right = 174.0
+margin_bottom = 18.0
+split_offset = 10
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/X Sense"]
+margin_right = 67.0
+margin_bottom = 18.0
+text = "x sens"
+
+[node name="XsensSlider" type="HSlider" parent="VBoxContainer/X Sense"]
+margin_left = 67.0
+margin_right = 174.0
+margin_bottom = 16.0
+rect_scale = Vector2( -1, 1 )
+rect_pivot_offset = Vector2( 53, 8 )
+min_value = 100.0
+max_value = 1000.0
+value = 500.0
+
+[node name="Y Sense" type="HSplitContainer" parent="VBoxContainer"]
+margin_top = 22.0
+margin_right = 174.0
+margin_bottom = 40.0
+grow_horizontal = 2
+split_offset = 11
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Y Sense"]
+margin_right = 67.0
+margin_bottom = 18.0
+text = "Y sens"
+
+[node name="YsensSlider" type="HSlider" parent="VBoxContainer/Y Sense"]
+margin_left = 67.0
+margin_right = 174.0
+margin_bottom = 16.0
+rect_scale = Vector2( -1, 1 )
+rect_pivot_offset = Vector2( 53, 8 )
+min_value = 100.0
+max_value = 1000.0
+value = 500.0
+
+[node name="Invert X" type="HSplitContainer" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 174.0
+margin_bottom = 66.0
+grow_horizontal = 2
+split_offset = 71
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Invert X"]
+margin_top = 2.0
+margin_right = 154.0
+margin_bottom = 20.0
+text = "invert x"
+
+[node name="InvertXBox" type="CheckBox" parent="VBoxContainer/Invert X"]
+margin_left = 154.0
+margin_right = 174.0
+margin_bottom = 22.0
+
+[node name="Invert Y" type="HSplitContainer" parent="VBoxContainer"]
+margin_top = 70.0
+margin_right = 174.0
+margin_bottom = 92.0
+grow_horizontal = 2
+split_offset = 73
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Invert Y"]
+margin_top = 2.0
+margin_right = 154.0
+margin_bottom = 20.0
+text = "invert Y"
+
+[node name="InvertYBox" type="CheckBox" parent="VBoxContainer/Invert Y"]
+margin_left = 154.0
+margin_right = 174.0
+margin_bottom = 22.0
+
+[node name="SFX" type="HSplitContainer" parent="VBoxContainer"]
+margin_top = 96.0
+margin_right = 174.0
+margin_bottom = 118.0
+grow_horizontal = 2
+split_offset = 123
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/SFX"]
+margin_top = 2.0
+margin_right = 154.0
+margin_bottom = 20.0
+text = "sfx"
+
+[node name="SFXBox" type="CheckBox" parent="VBoxContainer/SFX"]
+margin_left = 154.0
+margin_right = 174.0
+margin_bottom = 22.0
+pressed = true
+
+[node name="Music" type="HSplitContainer" parent="VBoxContainer"]
+margin_top = 122.0
+margin_right = 174.0
+margin_bottom = 144.0
+grow_horizontal = 2
+split_offset = 145
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Music"]
+margin_top = 2.0
+margin_right = 154.0
+margin_bottom = 20.0
+text = "Music"
+
+[node name="MusicBox" type="CheckBox" parent="VBoxContainer/Music"]
+margin_left = 154.0
+margin_right = 174.0
+margin_bottom = 22.0
+pressed = true
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -10.0
+margin_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="value_changed" from="VBoxContainer/X Sense/XsensSlider" to="." method="_on_XsensSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Y Sense/YsensSlider" to="." method="_on_YsensSlider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/Invert X/InvertXBox" to="." method="_on_InvertXBox_toggled"]
+[connection signal="toggled" from="VBoxContainer/Invert Y/InvertYBox" to="." method="_on_InvertYBox_toggled"]
+[connection signal="toggled" from="VBoxContainer/SFX/SFXBox" to="." method="_on_SFXBox_toggled"]
+[connection signal="toggled" from="VBoxContainer/Music/MusicBox" to="." method="_on_MusicBox_toggled"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
