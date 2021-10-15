@@ -16,6 +16,11 @@ func _ready():
 	rotator = $Rotation
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		rot_x += PI
+		rotate_self()
+
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		# do variable calculations
@@ -28,13 +33,16 @@ func _input(event):
 		
 		# clamp vertical
 		rot_y = clamp(rot_y, -1, 1)
-
-		# reset rotation
-		rotator.transform.basis = Basis()
 		
-		# rotate
-		rotator.rotate_object_local(Vector3(0, 1, 0), rot_x)
-		rotator.rotate_object_local(Vector3(1, 0 , 0), rot_y)
+		rotate_self()
+
+func rotate_self():
+	# reset rotation
+	rotator.transform.basis = Basis()
+	
+	# rotate
+	rotator.rotate_object_local(Vector3(0, 1, 0), rot_x)
+	rotator.rotate_object_local(Vector3(1, 0 , 0), rot_y)
 
 func _on_RayCast_clicked_object(object):
 	emit_signal("clicked_object", object)
