@@ -4,6 +4,8 @@ export (Array, PackedScene) var plants
 export (Array, Vector3) var pattern_positions
 export (Array, Vector3) var puzzle_positions
 
+var pot_scene = preload("res://Scenes/Pot.tscn")
+
 var PLANT_COUNT = 5
 var difficulty_level = 1
 
@@ -16,12 +18,17 @@ var puzzle_plant_objs:Array
 
 var pattern_holder
 var puzzle_holder
+var pot_holder
+
+const PLANT_Y_OFFSET = 0.5
 
 func _ready():
 	pattern_holder = $PatternHolder
 	puzzle_holder = $PuzzleHolder
+	pot_holder = $PotHolder
 	randomize()
 	generate_room()
+	instantiate_pots()
 	# set up signal
 	var character = get_node("/root/Game/Character")
 	character.connect("clicked_object", self, "_on_Character_clicked_object")
@@ -73,21 +80,17 @@ func _on_Character_clicked_object(object):
 # GENERATING ROOM CODE #
 ########################
 func generate_room():
-	print("generating room")
 	set_up_pattern()
 	set_up_puzzle()
 	
 	instantiate_plants(state_pattern, pattern_positions, pattern_holder, false)
 	instantiate_plants(state_puzzle, puzzle_positions, puzzle_holder, true)
 	puzzle_plant_objs = puzzle_holder.get_children()
-	
-	print("-_-_-_-_-_-_-_-")
 
 func set_up_pattern():
 	state_pattern.resize(PLANT_COUNT)
 	for i in range(PLANT_COUNT):
 		var idx = randi() % plants.size()
-		print(idx)
 		state_pattern[i] = idx
 	state_puzzle = state_pattern.duplicate()
 
@@ -98,18 +101,36 @@ func set_up_puzzle():
 		for j in range(PLANT_COUNT):
 			if not j in used_idxs:
 				okay_idxs.append(j)
+		
 		# pick a random index not in the used indexes
 		var idx = okay_idxs[randi() % okay_idxs.size()]
-		# assign a random value to it
-		state_puzzle[idx] = randi() % plants.size()
+		
+		# assign a random value to it (not original)
+		var new_state = state_puzzle[idx]
+		while new_state == state_puzzle[idx]:
+			new_state = randi() % plants.size()
+		state_puzzle[idx] = new_state
+		
+		# let's not use this one again, k?
 		used_idxs.append(idx)
 
 func instantiate_plants(state_array, positions, holder, clickable):
-	print("-----")
 	for i in range(state_array.size()):
 		var idx = state_array[i]
 		print(idx)
 		var plant = plants[idx].instance()
 		plant.translation = positions[i]
+		plant.translation.y += PLANT_Y_OFFSET
 		plant.find_node("Collider").is_clickable = clickable
 		holder.add_child(plant)
+
+func instantiate_pots():
+	for pos in pattern_positions:
+		instantiate_pot(pos)
+	for pos in puzzle_positions:
+		instantiate_pot(pos)
+
+func instantiate_pot(pos):
+	var pot = pot_scene.instance()
+	pot.translation = pos
+	pot_holder.add_child(pot)

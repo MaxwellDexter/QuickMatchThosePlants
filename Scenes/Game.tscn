@@ -7,10 +7,10 @@
 [ext_resource path="res://UI/UI_theme.tres" type="Theme" id=5]
 [ext_resource path="res://UI/KidpixiesRegular-p0Z1.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 100 )
 
-[sub_resource type="ProceduralSky" id=3]
+[sub_resource type="ProceduralSky" id=2]
 sky_top_color = Color( 0.211765, 0.313726, 0.552941, 1 )
 sky_horizon_color = Color( 0.545098, 0.686275, 0.811765, 1 )
 sky_curve = 0.13
@@ -20,16 +20,16 @@ sun_latitude = 50.0
 sun_angle_max = 30.0
 sun_energy = 30.0
 
-[sub_resource type="Environment" id=4]
+[sub_resource type="Environment" id=3]
 background_mode = 2
-background_sky = SubResource( 3 )
+background_sky = SubResource( 2 )
 ambient_light_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 ambient_light_energy = 1.61
 ambient_light_sky_contribution = 0.23
 tonemap_mode = 2
 tonemap_white = 16.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Sun Rotate"
 length = 60.0
 tracks/0/type = "value"
@@ -45,7 +45,7 @@ tracks/0/keys = {
 "values": [ Vector3( -10, 37, 0 ), Vector3( -170, 37, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "Pause Bop"
 length = 2.0
 loop = true
@@ -75,11 +75,11 @@ pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
 [node name="Plane" type="MeshInstance" parent="."]
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 4 )
+environment = SubResource( 3 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
 transform = Transform( 0.798635, -0.104504, -0.592672, 0, -0.984808, 0.173648, -0.601815, -0.138682, -0.786503, 0, 5, 0 )
@@ -87,7 +87,7 @@ shadow_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WorldEnvironment/DirectionalLight"]
 autoplay = "Sun Rotate"
-"anims/Sun Rotate" = SubResource( 5 )
+"anims/Sun Rotate" = SubResource( 4 )
 
 [node name="Level Manager" type="Spatial" parent="."]
 script = ExtResource( 2 )
@@ -138,7 +138,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pause/PauseScreen/Title"]
 autoplay = "Pause Bop"
-"anims/Pause Bop" = SubResource( 7 )
+"anims/Pause Bop" = SubResource( 5 )
 
 [node name="Button" type="Button" parent="Pause/PauseScreen"]
 anchor_left = 0.5

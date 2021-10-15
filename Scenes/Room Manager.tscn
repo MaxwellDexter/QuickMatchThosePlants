@@ -15,8 +15,8 @@ albedo_color = Color( 0, 0, 0, 1 )
 [node name="Room" type="Spatial"]
 script = ExtResource( 1 )
 plants = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 7 ) ]
-pattern_positions = [ Vector3( -3, 0.5, 5 ), Vector3( -4, 0.5, 2.5 ), Vector3( -5, 0.5, 0 ), Vector3( -4, 0.5, -2.5 ), Vector3( -3, 0.5, -5 ) ]
-puzzle_positions = [ Vector3( 3, 0.5, 5 ), Vector3( 4, 0.5, 2.5 ), Vector3( 5, 0.5, 0 ), Vector3( 4, 0.5, -2.5 ), Vector3( 3, 0.5, -5 ) ]
+pattern_positions = [ Vector3( -3, 0, 3 ), Vector3( -4, 0, 1.5 ), Vector3( -5, 0, 0 ), Vector3( -4, 0, -1.5 ), Vector3( -3, 0, -3 ) ]
+puzzle_positions = [ Vector3( 3, 0, 3 ), Vector3( 4, 0, 1.5 ), Vector3( 5, 0, 0 ), Vector3( 4, 0, -1.5 ), Vector3( 3, 0, -3 ) ]
 
 [node name="PuzzleHolder" type="Spatial" parent="."]
 
@@ -30,38 +30,40 @@ material/0 = SubResource( 1 )
 [node name="NextButtonCase" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.46194, 0, -0.191342, 0, 0.5, 0, 0.191342, 0, 0.46194, 0, 0, -2.5 )
 
-[node name="Pot Holder" type="Spatial" parent="."]
+[node name="PotHolder" type="Spatial" parent="."]
 
-[node name="Pattern" type="Spatial" parent="Pot Holder"]
+[node name="Pattern" type="Spatial" parent="PotHolder"]
+visible = false
 
-[node name="pot5" parent="Pot Holder/Pattern" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5 )
+[node name="pot5" parent="PotHolder/Pattern" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5 )
 
-[node name="pot4" parent="Pot Holder/Pattern" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2.5 )
+[node name="pot4" parent="PotHolder/Pattern" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 2.5 )
 
-[node name="pot" parent="Pot Holder/Pattern" instance=ExtResource( 8 )]
+[node name="pot" parent="PotHolder/Pattern" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0 )
 
-[node name="pot2" parent="Pot Holder/Pattern" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2.5 )
+[node name="pot2" parent="PotHolder/Pattern" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -2.5 )
 
-[node name="pot3" parent="Pot Holder/Pattern" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5 )
+[node name="pot3" parent="PotHolder/Pattern" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5 )
 
-[node name="Puzzle" type="Spatial" parent="Pot Holder"]
+[node name="Puzzle" type="Spatial" parent="PotHolder"]
+visible = false
 
-[node name="pot10" parent="Pot Holder/Puzzle" instance=ExtResource( 8 )]
+[node name="pot10" parent="PotHolder/Puzzle" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5 )
 
-[node name="pot9" parent="Pot Holder/Puzzle" instance=ExtResource( 8 )]
+[node name="pot9" parent="PotHolder/Puzzle" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2.5 )
 
-[node name="pot6" parent="Pot Holder/Puzzle" instance=ExtResource( 8 )]
+[node name="pot6" parent="PotHolder/Puzzle" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
 
-[node name="pot7" parent="Pot Holder/Puzzle" instance=ExtResource( 8 )]
+[node name="pot7" parent="PotHolder/Puzzle" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2.5 )
 
-[node name="pot8" parent="Pot Holder/Puzzle" instance=ExtResource( 8 )]
+[node name="pot8" parent="PotHolder/Puzzle" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5 )
