@@ -1,14 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/RoomManager.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Tree1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Tree2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Tree3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Greenhouse.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Tree4.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Models/GreenhouseSide.obj" type="ArrayMesh" id=8]
-[ext_resource path="res://Mats/Greenhouse_Mat.tres" type="Material" id=9]
-[ext_resource path="res://Models/GreenhouseEnd.obj" type="ArrayMesh" id=10]
 
 [node name="Room" type="Spatial"]
 script = ExtResource( 1 )
@@ -25,74 +23,4 @@ transform = Transform( 0.46194, 0, -0.191342, 0, 0.5, 0, 0.191342, 0, 0.46194, 0
 
 [node name="PotHolder" type="Spatial" parent="."]
 
-[node name="Greenhouse" type="Spatial" parent="."]
-
-[node name="Left Sides" type="Spatial" parent="Greenhouse"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.966, 0, 0 )
-
-[node name="GreenhouseSide" type="MeshInstance" parent="Greenhouse/Left Sides"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.33432 )
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 9 )
-
-[node name="GreenhouseSide2" type="MeshInstance" parent="Greenhouse/Left Sides"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.15758 )
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 9 )
-
-[node name="GreenhouseSide3" type="MeshInstance" parent="Greenhouse/Left Sides"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0184854 )
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 9 )
-
-[node name="GreenhouseSide4" type="MeshInstance" parent="Greenhouse/Left Sides"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.19589 )
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 9 )
-
-[node name="Right Sides" type="Spatial" parent="Greenhouse"]
-transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, 1, 5.966, 0, 0 )
-
-[node name="GreenhouseSide" type="MeshInstance" parent="Greenhouse/Right Sides"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.33432 )
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 9 )
-
-[node name="GreenhouseSide2" type="MeshInstance" parent="Greenhouse/Right Sides"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.15758 )
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 9 )
-
-[node name="GreenhouseSide3" type="MeshInstance" parent="Greenhouse/Right Sides"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0184854 )
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 9 )
-
-[node name="GreenhouseSide4" type="MeshInstance" parent="Greenhouse/Right Sides"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.19589 )
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 9 )
-
-[node name="Bottom Ends" type="Spatial" parent="Greenhouse"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.48772 )
-
-[node name="GreenhouseEnd" type="MeshInstance" parent="Greenhouse/Bottom Ends"]
-mesh = ExtResource( 10 )
-material/0 = ExtResource( 9 )
-
-[node name="GreenhouseEnd2" type="MeshInstance" parent="Greenhouse/Bottom Ends"]
-transform = Transform( -1, 0, 0, 0, 1, 1.50996e-07, 0, -1.50996e-07, 1, 0, 0, 0 )
-mesh = ExtResource( 10 )
-material/0 = ExtResource( 9 )
-
-[node name="Top Ends" type="Spatial" parent="Greenhouse"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, -6.52676 )
-
-[node name="GreenhouseEnd" type="MeshInstance" parent="Greenhouse/Top Ends"]
-mesh = ExtResource( 10 )
-material/0 = ExtResource( 9 )
-
-[node name="GreenhouseEnd2" type="MeshInstance" parent="Greenhouse/Top Ends"]
-transform = Transform( -1, 0, 0, 0, 1, 1.50996e-07, 0, -1.50996e-07, 1, 0, 0, 0 )
-mesh = ExtResource( 10 )
-material/0 = ExtResource( 9 )
+[node name="Greenhouse" parent="." instance=ExtResource( 5 )]

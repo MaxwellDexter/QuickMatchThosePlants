@@ -10,7 +10,7 @@
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 100 )
 
-[sub_resource type="ProceduralSky" id=2]
+[sub_resource type="ProceduralSky" id=7]
 sky_top_color = Color( 0.211765, 0.313726, 0.552941, 1 )
 sky_horizon_color = Color( 0.545098, 0.686275, 0.811765, 1 )
 sky_curve = 0.13
@@ -22,7 +22,7 @@ sun_energy = 30.0
 
 [sub_resource type="Environment" id=3]
 background_mode = 2
-background_sky = SubResource( 2 )
+background_sky = SubResource( 7 )
 ambient_light_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 ambient_light_energy = 1.61
 ambient_light_sky_contribution = 0.23
@@ -140,14 +140,38 @@ __meta__ = {
 autoplay = "Pause Bop"
 "anims/Pause Bop" = SubResource( 5 )
 
-[node name="Button" type="Button" parent="Pause/PauseScreen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/PauseScreen"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.4
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.4
+grow_horizontal = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="return" type="Button" parent="Pause/PauseScreen/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "back to da game"
+
+[node name="restart" type="Button" parent="Pause/PauseScreen/VBoxContainer"]
+margin_top = 26.0
+margin_right = 160.0
+margin_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "restart"
+
+[node name="main menu" type="Button" parent="Pause/PauseScreen/VBoxContainer"]
+margin_top = 52.0
+margin_right = 160.0
+margin_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "main menu"
 
 [node name="End Screen" type="Control" parent="Pause"]
 visible = false
@@ -186,4 +210,6 @@ valign = 1
 
 [connection signal="timeout" from="Level Manager/Timer" to="Level Manager" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Level Manager/Level Timer" to="Level Manager" method="_on_Level_Timer_timeout"]
-[connection signal="pressed" from="Pause/PauseScreen/Button" to="Pause/PauseScreen" method="_on_Button_pressed"]
+[connection signal="pressed" from="Pause/PauseScreen/VBoxContainer/return" to="Pause/PauseScreen" method="_on_Button_pressed"]
+[connection signal="pressed" from="Pause/PauseScreen/VBoxContainer/restart" to="Pause/PauseScreen" method="_on_restart_pressed"]
+[connection signal="pressed" from="Pause/PauseScreen/VBoxContainer/main menu" to="Pause/PauseScreen" method="_on_main_menu_pressed"]

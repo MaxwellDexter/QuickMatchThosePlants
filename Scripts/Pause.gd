@@ -23,3 +23,12 @@ func toggle_pause():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _on_restart_pressed():
+	toggle_pause()
+	get_tree().change_scene("res://Scenes/Game.tscn")
+
+func _on_main_menu_pressed():
+	toggle_pause()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
