@@ -43,9 +43,18 @@ func get_next_plant_obj(index):
 	return plants[index].instance()
 
 func check_state():
+	var i = 0
+	var j = PLANT_COUNT - 1
+	var done = false
 	var solved = true
-	for i in range(state_pattern.size()):
-		solved = solved && state_pattern[i] == state_puzzle[i]
+	# have to reverse the puzzle order hence the negative for loop type deal
+	while not done:
+		solved = solved && state_pattern[i] == state_puzzle[j]
+		i += 1
+		j -= 1
+		if i >= state_pattern.size() or j < 0:
+			done = true
+	
 	return solved
 
 func cycle_plant(index):
@@ -92,9 +101,12 @@ func set_up_pattern():
 	for i in range(PLANT_COUNT):
 		var idx = randi() % plants.size()
 		state_pattern[i] = idx
-	state_puzzle = state_pattern.duplicate()
+	
 
 func set_up_puzzle():
+	state_puzzle = state_pattern.duplicate()
+	state_puzzle.invert()
+	
 	var used_idxs = []
 	for i in range(difficulty_level):
 		var okay_idxs = []
