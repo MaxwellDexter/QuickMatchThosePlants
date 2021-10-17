@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Models/Tree1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Mats/Interact.tres" type="Material" id=2]
 [ext_resource path="res://Textures/Tree1_Diffuse.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Tree1_Emissive.png" type="Texture" id=4]
+[ext_resource path="res://Audio/SFX/hover_interactable.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scripts/clickable.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/plant.gd" type="Script" id=8]
 
@@ -36,3 +37,7 @@ identifier = "Tree1"
 [node name="CollisionShape" type="CollisionShape" parent="Collider"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0 )
 shape = SubResource( 2 )
+
+[node name="HoverNoise" type="AudioStreamPlayer" parent="Collider"]
+stream = ExtResource( 5 )
+bus = "Game Sound"

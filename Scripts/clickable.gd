@@ -14,5 +14,6 @@ func set_targeted(value):
 	targeted = value
 	if is_clickable and targeted:
 		shader.set_shader_param("strength", 0.2)
+		$HoverNoise.play()
 	else:
 		shader.set_shader_param("strength", 0.0)

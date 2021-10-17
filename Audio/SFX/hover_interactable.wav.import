@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hover_interactable.wav-b8f568b22059f1da844e68e5908c4fdf.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/hover_interactable.wav"
+dest_files=[ "res://.import/hover_interactable.wav-b8f568b22059f1da844e68e5908c4fdf.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Models/NextButtonCase.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Textures/NextButton_Diffuse.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scripts/clickable.gd" type="Script" id=5]
 [ext_resource path="res://Mats/Interact.tres" type="Material" id=6]
 [ext_resource path="res://Scripts/button_model.gd" type="Script" id=7]
+[ext_resource path="res://Audio/SFX/button_game_click.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/SFX/hover_interactable.wav" type="AudioStream" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 next_pass = ExtResource( 6 )
@@ -60,7 +62,15 @@ is_clickable = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 3 )
 
+[node name="HoverNoise" type="AudioStreamPlayer" parent="StaticBody"]
+stream = ExtResource( 9 )
+bus = "Game Sound"
+
 [node name="ButtonAnimation" type="AnimationPlayer" parent="."]
 autoplay = "Button"
 playback_speed = 4.0
 anims/Button = SubResource( 4 )
+
+[node name="PushNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true

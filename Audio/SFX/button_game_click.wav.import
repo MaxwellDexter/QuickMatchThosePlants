@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/button_game_click.wav-dcf79d55dabf6c907a6c42f3860820dd.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/button_game_click.wav"
+dest_files=[ "res://.import/button_game_click.wav-dcf79d55dabf6c907a6c42f3860820dd.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=1

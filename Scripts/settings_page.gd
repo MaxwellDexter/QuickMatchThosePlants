@@ -41,8 +41,13 @@ func _on_InvertYBox_toggled(button_pressed):
 
 func _on_SFXBox_toggled(button_pressed):
 	Settings.SFX = button_pressed
-	AudioServer.set_bus_mute(SFX_BUS_NO, Settings.SFX)
+	AudioServer.set_bus_mute(SFX_BUS_NO, not Settings.SFX)
 
 func _on_MusicBox_toggled(button_pressed):
 	Settings.Music = button_pressed
-	AudioServer.set_bus_mute(MUSIC_BUS_NO, Settings.Music)
+	AudioServer.set_bus_mute(MUSIC_BUS_NO, not Settings.Music)
+	print(AudioServer.is_bus_mute(MUSIC_BUS_NO))
+
+
+func _play_hover():
+	pass # Replace with function body.

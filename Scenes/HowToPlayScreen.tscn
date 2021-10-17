@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/UI_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/credits_screen.gd" type="Script" id=2]
 [ext_resource path="res://UI/Ldfcomicsans-jj7l.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://UI/Ldfcomicsansbold-zgma.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://UI/Ldfcomicsanslight-6dZo.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Audio/SFX/ui_click.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/SFX/ui_hover.wav" type="AudioStream" id=7]
+[ext_resource path="res://Scripts/ui_audio_player.gd" type="Script" id=8]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0, 0, 0, 1 )
@@ -12,26 +15,26 @@ colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0, 0, 0, 1 )
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 12
 outline_size = 1
 outline_color = Color( 0, 0.12549, 0.0117647, 1 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 13
 outline_size = 1
 outline_color = Color( 0.223529, 0, 0.207843, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 12
 font_data = ExtResource( 3 )
 
 [node name="How To Play" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -226.269, -61.0829 )
+rect_pivot_offset = Vector2( -82.328, 5.96822 )
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -91,9 +94,9 @@ margin_left = -41.2748
 margin_right = 40.7252
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/italics_font = SubResource( 4 )
-custom_fonts/bold_font = SubResource( 5 )
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/italics_font = SubResource( 3 )
+custom_fonts/bold_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
 bbcode_text = "[b][center]Controls:[/center][/b]
 [i]Mouse[/i]: Look Around
@@ -129,4 +132,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Audio" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 6 )
+
+[node name="HoverPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 7 )
+
+[connection signal="mouse_entered" from="Button" to="Audio" method="_play_hover"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button" to="Audio" method="_play_click"]
