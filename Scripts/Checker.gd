@@ -7,8 +7,6 @@ var looking_at
 func _process(delta):
 	var col = get_collider()
 	if col != looking_at:
-		print(looking_at)
-		print(looking_at != null)
 		if looking_at != null and is_instance_valid(looking_at):
 			looking_at.targeted = false
 		looking_at = col

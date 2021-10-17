@@ -7,6 +7,9 @@ var y_box
 var sfx_box
 var music_box
 
+const SFX_BUS_NO = 1
+const MUSIC_BUS_NO = 2
+
 func _ready():
 	x_slider = $"VBoxContainer/X Sense/XsensSlider"
 	x_slider.value = Settings.X_MOUSE_SENSITIVITY
@@ -38,6 +41,8 @@ func _on_InvertYBox_toggled(button_pressed):
 
 func _on_SFXBox_toggled(button_pressed):
 	Settings.SFX = button_pressed
+	AudioServer.set_bus_mute(SFX_BUS_NO, Settings.SFX)
 
 func _on_MusicBox_toggled(button_pressed):
 	Settings.Music = button_pressed
+	AudioServer.set_bus_mute(MUSIC_BUS_NO, Settings.Music)

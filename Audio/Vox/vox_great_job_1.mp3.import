@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/vox_great_job_1.mp3-656ce9beca89bd82fdcaf7434f877bb7.mp3str"
+
+[deps]
+
+source_file="res://Audio/Vox/vox_great_job_1.mp3"
+dest_files=[ "res://.import/vox_great_job_1.mp3-656ce9beca89bd82fdcaf7434f877bb7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/vox_amazing_2.mp3-fedd8b259bda485aba9412e8cc87b34a.mp3str"
+
+[deps]
+
+source_file="res://Audio/Vox/vox_amazing_2.mp3"
+dest_files=[ "res://.import/vox_amazing_2.mp3-fedd8b259bda485aba9412e8cc87b34a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

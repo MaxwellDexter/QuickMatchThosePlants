@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/level_manager.gd" type="Script" id=2]
@@ -16,9 +16,18 @@
 [ext_resource path="res://Textures/Terrain/Game_slot0_normal_roughness.packed_tex" type="Texture" id=14]
 [ext_resource path="res://Textures/Terrain/Game_slot0_albedo_bump.packed_tex" type="Texture" id=15]
 [ext_resource path="res://Textures/Terrain/Game_slot3_albedo_bump.packed_tex" type="Texture" id=16]
+[ext_resource path="res://Scripts/game_audio.gd" type="Script" id=17]
 [ext_resource path="res://Textures/Terrain/Game_slot3_normal_roughness.packed_tex" type="Texture" id=18]
+[ext_resource path="res://Audio/Vox/vox_wow_2.mp3" type="AudioStream" id=19]
+[ext_resource path="res://Scripts/oneshot_player.gd" type="Script" id=20]
+[ext_resource path="res://Audio/Vox/vox_great_job_2.mp3" type="AudioStream" id=21]
+[ext_resource path="res://Audio/Vox/vox_amazing_1.mp3" type="AudioStream" id=22]
+[ext_resource path="res://Audio/Vox/vox_wow_1.mp3" type="AudioStream" id=23]
+[ext_resource path="res://Audio/Vox/vox_great_job_1.mp3" type="AudioStream" id=24]
+[ext_resource path="res://Audio/Vox/vox_spectacular.mp3" type="AudioStream" id=25]
+[ext_resource path="res://Audio/Vox/vox_amazing_2.mp3" type="AudioStream" id=26]
 
-[sub_resource type="ProceduralSky" id=2]
+[sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.26, 0.0416, 0.0452399, 1 )
 sky_horizon_color = Color( 0.815686, 0.376471, 0.156863, 1 )
 sky_curve = 0.13
@@ -30,16 +39,16 @@ sun_longitude = 105.0
 sun_angle_max = 30.0
 sun_energy = 0.72
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=2]
 background_mode = 2
-background_sky = SubResource( 2 )
+background_sky = SubResource( 1 )
 ambient_light_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 ambient_light_energy = 1.61
 ambient_light_sky_contribution = 0.23
 tonemap_mode = 2
 tonemap_white = 16.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Sun Rotate"
 length = 60.0
 tracks/0/type = "value"
@@ -139,7 +148,7 @@ tracks/7/keys = {
 "values": [ Color( 1, 0.570312, 0.801941, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0.780392, 0.403922, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Pause Bop"
 length = 2.0
 loop = true
@@ -156,13 +165,13 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.4, 1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="Resource" id=7]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 8 )
 mode = 0
 textures = [ [ ExtResource( 15 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 16 ) ], [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 18 ) ] ]
@@ -174,7 +183,7 @@ pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
 transform = Transform( 0.258819, -0.167731, -0.951252, 0, -0.984808, 0.173648, -0.965925, -0.0449435, -0.254887, 0, 5, 0 )
@@ -184,7 +193,7 @@ shadow_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WorldEnvironment/DirectionalLight"]
 autoplay = "Sun Rotate"
-"anims/Sun Rotate" = SubResource( 4 )
+"anims/Sun Rotate" = SubResource( 3 )
 
 [node name="Level Manager" type="Spatial" parent="."]
 script = ExtResource( 2 )
@@ -239,7 +248,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pause/PauseScreen/Title"]
 autoplay = "Pause Bop"
-"anims/Pause Bop" = SubResource( 5 )
+"anims/Pause Bop" = SubResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Pause/PauseScreen"]
 anchor_left = 0.5
@@ -300,7 +309,7 @@ margin_top = 30.922
 margin_right = 94.0392
 margin_bottom = 58.922
 rect_rotation = -28.1
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "day's over!!!"
 align = 1
 valign = 1
@@ -320,11 +329,40 @@ collision_mask = 1
 shader_type = "Classic4Lite"
 custom_shader = null
 custom_globalmap_shader = null
-texture_set = SubResource( 7 )
+texture_set = SubResource( 6 )
 shader_params/u_ground_uv_scale = 20
 shader_params/u_depth_blending = false
 shader_params/u_triplanar = false
 shader_params/u_tile_reduction = Plane( 1, 1, 1, 1 )
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource( 17 )
+
+[node name="Vox" type="Node" parent="Audio"]
+
+[node name="Wow" type="AudioStreamPlayer" parent="Audio/Vox"]
+mix_target = 2
+bus = "Game Sound"
+script = ExtResource( 20 )
+resources = [ ExtResource( 23 ), ExtResource( 19 ) ]
+
+[node name="Great Job" type="AudioStreamPlayer" parent="Audio/Vox"]
+mix_target = 2
+bus = "Game Sound"
+script = ExtResource( 20 )
+resources = [ ExtResource( 24 ), ExtResource( 21 ) ]
+
+[node name="Amazing" type="AudioStreamPlayer" parent="Audio/Vox"]
+mix_target = 2
+bus = "Game Sound"
+script = ExtResource( 20 )
+resources = [ ExtResource( 22 ), ExtResource( 26 ) ]
+
+[node name="Spectacular" type="AudioStreamPlayer" parent="Audio/Vox"]
+mix_target = 2
+bus = "Game Sound"
+script = ExtResource( 20 )
+resources = [ ExtResource( 25 ) ]
 
 [connection signal="timeout" from="Level Manager/Timer" to="Level Manager" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Level Manager/Level Timer" to="Level Manager" method="_on_Level_Timer_timeout"]
