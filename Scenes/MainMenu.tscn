@@ -34,8 +34,14 @@ background_sky = SubResource( 1 )
 ambient_light_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 ambient_light_energy = 1.61
 ambient_light_sky_contribution = 0.23
+fog_enabled = true
+fog_depth_end = 80.0
 tonemap_mode = 2
 tonemap_white = 16.0
+adjustment_enabled = true
+adjustment_brightness = 1.2
+adjustment_contrast = 1.1
+adjustment_saturation = 1.5
 
 [sub_resource type="Animation" id=3]
 resource_name = "New Anim"
