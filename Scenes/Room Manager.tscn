@@ -9,13 +9,13 @@
 [ext_resource path="res://Scenes/Tree4.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Textures/Terrain/01tizeta_floor_a.png" type="Texture" id=8]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.615686, 0.615686, 0.615686, 1 )
 albedo_texture = ExtResource( 8 )
 uv1_scale = Vector3( 6.5, 6.5, 1 )
 
 [sub_resource type="PlaneMesh" id=2]
-material = SubResource( 3 )
+material = SubResource( 1 )
 size = Vector2( 12.367, 13.118 )
 
 [node name="Room" type="Spatial"]

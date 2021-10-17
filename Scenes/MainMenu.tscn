@@ -132,10 +132,11 @@ shadow_enabled = true
 [node name="MainMenu" parent="." instance=ExtResource( 2 )]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.975917, 0, 0.218143, 0, 1, 0, -0.218143, 0, 0.975917, 2.8, 3.5, 10 )
+transform = Transform( 0.707107, 0.183013, -0.683013, 0, 0.965926, 0.258819, 0.707107, -0.183013, 0.683013, -10, 3.5, 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
 autoplay = "New Anim"
+playback_speed = 0.5
 "anims/New Anim" = SubResource( 3 )
 
 [node name="Pots" type="Spatial" parent="."]

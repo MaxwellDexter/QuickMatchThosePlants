@@ -9,7 +9,7 @@ func points_added(points, max_points):
 		$Vox/Wow.play_next()
 	elif percentage < 0.5:
 		$"Vox/Great Job".play_next()
-	elif percentage < 0.9:
+	elif percentage < 0.85:
 		$Vox/Amazing.play_next()
 	else:
 		$Vox/Spectacular.play_next()
