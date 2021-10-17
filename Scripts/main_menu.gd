@@ -11,3 +11,9 @@ func _on_Settings_pressed():
 
 func _on_Quit_pressed():
 	get_tree().quit()
+
+func _on_Credits_pressed():
+	get_tree().change_scene("res://Scenes/CreditsScreen.tscn")
+
+func _on_How_To_Play_pressed():
+	get_tree().change_scene("res://Scenes/HowToPlayScreen.tscn")
