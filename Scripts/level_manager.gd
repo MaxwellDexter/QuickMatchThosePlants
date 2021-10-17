@@ -9,6 +9,8 @@ var can_pause = true
 var room_inst
 var score = 0
 var level_time = 0
+var levels_completed = 0
+var level_difficulty = 1
 
 const MIN_LEVEL_TIME = 20
 const MAX_LEVEL_SCORE = 1000
@@ -20,14 +22,27 @@ func _ready():
 
 func load_room():
 	room_inst = room_scene.instance()
+	room_inst.difficulty = level_difficulty
 	add_child(room_inst)
 	reset_time()
 
 func next_room(correct):
+	if correct: levels_completed += 1
+	increase_difficulty()
 	add_score(correct)
 	remove_child(room_inst)
 	room_inst.queue_free()
 	load_room()
+
+func increase_difficulty():
+	if levels_completed == 3:
+		level_difficulty = 2
+	elif levels_completed == 6:
+		level_difficulty = 3
+	elif levels_completed == 9:
+		level_difficulty = 4
+	elif levels_completed == 12:
+		level_difficulty = 5
 
 func add_score(correct):
 	var score_to_add = MIN_LEVEL_SCORE

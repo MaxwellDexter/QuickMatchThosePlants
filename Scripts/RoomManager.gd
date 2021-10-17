@@ -7,7 +7,7 @@ export (Array, Vector3) var puzzle_positions
 var pot_scene = preload("res://Scenes/Pot.tscn")
 
 var PLANT_COUNT = 5
-var difficulty_level = 1
+var difficulty = 1
 
 # these are the index in the plants array
 var state_pattern:Array
@@ -108,7 +108,7 @@ func set_up_puzzle():
 	state_puzzle.invert()
 	
 	var used_idxs = []
-	for i in range(difficulty_level):
+	for i in range(difficulty):
 		var okay_idxs = []
 		for j in range(PLANT_COUNT):
 			if not j in used_idxs:
